@@ -99,7 +99,7 @@ class WP_Share_This {
 		// set some defaults
 		$args = wp_parse_args( $params, array(
 			'url'         => null,
-			'short-url'   => null,
+			'short_url'   => null,
 			'title'       => null,
 			'image'       => null,
 			'description' => null,
@@ -112,7 +112,7 @@ class WP_Share_This {
 		if ( $post instanceof \WP_Post ) {
 			$args = wp_parse_args( $params, array(
 				'url'         => get_permalink( $post ),
-				'short-url'   => null,
+				'short_url'   => null,
 				'title'       => $post->post_title,
 				'image'       => null,
 				'description' => get_the_excerpt( $post ),
