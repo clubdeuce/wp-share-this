@@ -14,7 +14,7 @@
   ],
   "autoload": {
     "classmap": [
-      "wp-add-this.php"
+      "wp-share-this.php"
     ]
   },
   "require": {
