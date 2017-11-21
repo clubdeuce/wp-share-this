@@ -19,7 +19,7 @@ install:
   - composer install
 
 before_script:
-  - svn checkout http://svn.wordpress.org/tags/${WP_VERSION} ${WP_DIR}
+  - svn checkout http://core.svn.wordpress.org/tags/${WP_VERSION} ${WP_DIR}
   - mysql -e 'CREATE DATABASE test_db;'
   - cp ${WP_DIR}/wp-config-sample.php ${WP_DIR}/wp-config.php
   - sed -i 's/youremptytestdbnamehere/test_db/' ${WP_DIR}/wp-config.php
@@ -27,7 +27,7 @@ before_script:
   - sed -i 's/yourpasswordhere//' ${WP_DIR}/wp-config.php
 
 script:
-  - ./vendor/bin/codecept run wpunit --coverage-clover clover.xml
+  - ./vendor/bin/codecept run wpunit --coverage-clover clover.xml --coverage-text
 
 after_script:
   - wget https://scrutinizer-ci.com/ocular.phar
