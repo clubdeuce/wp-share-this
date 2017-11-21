@@ -66,7 +66,7 @@ class WpShareThisTest extends \Codeception\Test\Unit
 		$this->assertRegExp('#class="st-custom-button.*?" #', $html);
 		$this->assertRegExp('#<div data-network="facebook".*?\>#', $html);
 		$this->assertRegExp('#data-url="http://example\.org/\?p=[0-9]*?"#', $html);
-		$this->assertRegExp('#data-image="http://example\.org/wp-content/uploads/[0-9]{4}/[0-9]{2}/overheard-facebook-[0-9]*?\.png"#', $html);
+		$this->assertRegExp('#data-image="http://example\.org/wp-content/uploads/[0-9]{4}/[0-9]{2}/overheard-facebook[-]*[0-9]*?\.png"#', $html);
 		$this->assertRegExp("#data-title=\"{$title}\"#", $html);
 		$this->assertRegExp("#data-description=\"{$excerpt}\"#", $html);
 		$this->assertRegExp('#<span class="count"><\/span>#', $html);
