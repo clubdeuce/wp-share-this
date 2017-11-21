@@ -79,7 +79,7 @@ class WP_Share_This {
 	}
 
 	/**
-	 *
+	 * @param \WP_Post|null
 	 */
 	public static function the_sharing_links( $post = null ) {
 
@@ -149,7 +149,7 @@ class WP_Share_This {
 	private static function _facebook_og() {
 
 		printf( '<meta property="og:url" content="%1$s" />' . PHP_EOL, self::_og_url() );
-		print '<meta property="og:type" content="article" />' . PHP_EOL;
+		printf( '<meta property="og:type" content="%1$s" />' . PHP_EOL, self::_og_type() );
 		printf( '<meta property="og:title" content="%1$s" />' . PHP_EOL, self::_og_title() );
 
 		if ( ! ( empty( $description = self::_og_description() ) ) ) {
@@ -176,6 +176,22 @@ class WP_Share_This {
 		return apply_filters( 'wpst_og_url', esc_url( $url ) );
 
 	}
+
+	/**
+	 * @return mixed|void
+	 */
+	private static function _og_type() {
+
+		$type = 'website';
+
+		if ( is_single() ) {
+			$type = 'article';
+		}
+
+		return apply_filters( 'wpst_og_type', $type );
+
+	}
+
 
 	/**
 	 * @return mixed|void
