@@ -5,6 +5,8 @@ paths:
     support: tests/_support
     envs: tests/_envs
 actor_suffix: Tester
+settings:
+    backup_globals: false
 extensions:
     enabled:
         - Codeception\Extension\RunFailed

@@ -39,6 +39,25 @@ class WpShareThisTest extends \Codeception\Test\Unit
     }
 
 	/**
+	 * @covers ::initialize
+	 */
+	public function testHooks()
+	{
+		$this->assertGreaterThan(0, has_action('wp_head',            array( WP_Share_This::class, '_wp_head')));
+		$this->assertGreaterThan(0, has_action('wp_enqueue_scripts', array( WP_Share_This::class, '_wp_enqueue_scripts')));
+	}
+
+	/**
+	 * @covers  ::_wp_enqueue_scripts
+	 * @depends testHooks
+	 */
+	public function testScriptIsRegistered()
+	{
+		do_action('wp_enqueue_scripts');
+		$this->assertTrue(wp_script_is('sharethis', 'enqueued'));
+	}
+
+	/**
 	 * @covers ::the_sharing_links
 	 * @covers ::register_service
 	 * @covers ::_render_sharing_link
@@ -71,24 +90,4 @@ class WpShareThisTest extends \Codeception\Test\Unit
 		$this->assertRegExp("#data-description=\"{$excerpt}\"#", $html);
 		$this->assertRegExp('#<span class="count"><\/span>#', $html);
 	}
-
-	/**
-	 * @covers ::initialize
-	 */
-	public function testHooks()
-	{
-		$this->assertGreaterThan(0, has_action('wp_head',            array( WP_Share_This::class, '_wp_head')));
-		$this->assertGreaterThan(0, has_action('wp_enqueue_scripts', array( WP_Share_This::class, '_wp_enqueue_scripts')));
-	}
-
-	/**
-	 * @covers  ::_wp_enqueue_scripts
-	 * @depends testHooks
-	 */
-	public function testScriptIsRegistered()
-	{
-		do_action('wp_enqueue_scripts');
-		$this->assertTrue(wp_script_is('sharethis', 'enqueued'));
-	}
-
 }
