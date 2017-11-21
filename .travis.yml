@@ -27,7 +27,7 @@ before_script:
   - sed -i 's/yourpasswordhere//' ${WP_DIR}/wp-config.php
 
 script:
-  - ./vendor/bin/codecept run wpunit --coverage-clover clover.xml --coverage-text
+  - ./vendor/bin/codecept run wpunit --coverage-xml clover.xml --coverage-text
 
 after_script:
   - wget https://scrutinizer-ci.com/ocular.phar
