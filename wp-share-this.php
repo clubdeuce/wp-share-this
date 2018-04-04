@@ -116,13 +116,13 @@ class WP_Share_This {
 
 		// set some defaults
 		$args = wp_parse_args( $params, array(
-			'url'         => null,
+			'url'         => get_the_permalink(),
 			'short_url'   => null,
-			'title'       => null,
+			'title'       => get_the_title(),
 			'image'       => null,
 			'description' => null,
 			'username'    => null,
-			'message'     => null,
+			'message'     => get_the_excerpt(),
 			'share_count' => true,
 		) );
 
@@ -131,11 +131,11 @@ class WP_Share_This {
 			$args = wp_parse_args( $params, array(
 				'url'         => get_permalink( $post ),
 				'short_url'   => null,
-				'title'       => $post->post_title,
+				'title'       => get_the_title( $post ),
 				'image'       => null,
 				'description' => get_the_excerpt( $post ),
 				'username'    => null,
-				'message'     => null,
+				'message'     => get_the_excerpt( $post ),
 				'share_count' => true,
 			) );
 
@@ -154,7 +154,7 @@ class WP_Share_This {
 			self::_item_sharing_property( 'image',       $args['image'] ),
 			self::_item_sharing_property( 'description', $args['description'] ),
 			self::_item_sharing_property( 'username',    $args['username'] ),
-			self::_item_sharing_property( 'message',     $args['message'] ),
+			self::_item_sharing_property( 'message',     $args['message']  . "\r\n\r\n" . $args['url'] ),
 			apply_filters( 'wpst_link_text', ucfirst( $service ) ),
 			self::_item_sharing_count( $args['share_count'] )
 		);

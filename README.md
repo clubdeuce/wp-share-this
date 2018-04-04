@@ -36,13 +36,13 @@ The following parameters can be specified for the sharing links on a per-service
 
 | Name | Description |
 | ---- | ----------- |
-|url|Specifies URL (can be shortened URL) that you would like shared.|
-|short_url|Specifies a shortened URL that can be used in conjunction with the data-url.|
-|title|Specifies title that you would like shared.|
-|image|Specifies link to image you would like displayed in the shared content.|
-|description|Specifies summary text/description you wish to share.|
+|url|Specifies URL (can be shortened URL) that you would like shared. Default: current global `$post` permalink.|
+|short_url|Specifies a shortened URL that can be used in conjunction with the data-url. Default: _null_|
+|title|Specifies title that you would like shared. Defaults to current global `$post` title.|
+|image|Specifies link to image you would like displayed in the shared content. Default: current global `$post` featured image if present.|
+|description|Specifies summary text/description you wish to share. Default: current global `$post` excerpt.|
 |username|Specifies your Twitter username.|
-|message|Specifies the body copy of e-mail shares.|
+|message|Specifies the body copy of e-mail shares. Default: current global `$post` excerpt.|
 |share_count|Specify whether to include the share count for this individual link item. Default: true.|
 
 ### Examples: ###
