@@ -84,6 +84,10 @@ class WP_Share_This {
 	 */
 	public static function the_sharing_links( $post = null, $args = array() ) {
 
+		if ( ! isset( $post ) ) {
+			$post = get_post();
+		}
+
 		foreach ( self::$_services as $service => $params ) {
 			$args = array_merge( $params, $args );
 			self::_render_sharing_link( $args, $service, $post );
@@ -92,11 +96,22 @@ class WP_Share_This {
 	}
 
 	/**
+	 * @param bool $use
+	 *
+	 * @since 0.0.2
+	 */
+	public static function use_og( $use = true ) {
+
+		self::$_facebook_og = $use;
+
+	}
+
+	/**
 	 * @param array    $params
 	 * @param string   $service
 	 * @param \WP_Post $post
 	 */
-	public static function _render_sharing_link( $params, $service, $post ) {
+	private static function _render_sharing_link( $params, $service, $post ) {
 
 		$classes = apply_filters( "wpst_link_classes_{$service}", array() );
 
