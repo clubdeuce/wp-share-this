@@ -79,18 +79,17 @@ class WP_Share_This {
 	}
 
 	/**
-	 * @param \WP_Post|null $post
-	 * @param array         $args
+	 * @param array $args
 	 */
-	public static function the_sharing_links( $post = null, $args = array() ) {
+	public static function the_sharing_links( $args = array() ) {
 
-		if ( ! isset( $post ) ) {
-			$post = get_post();
-		}
+		$args = wp_parse_args( $args, array(
+			'post' => get_post(),
+		) );
 
 		foreach ( self::$_services as $service => $params ) {
 			$args = array_merge( $params, $args );
-			self::_render_sharing_link( $args, $service, $post );
+			self::_render_sharing_link( $args, $service, $args['post'] );
 		}
 
 	}
