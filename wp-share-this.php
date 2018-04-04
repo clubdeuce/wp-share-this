@@ -207,7 +207,7 @@ class WP_Share_This {
 			$description = get_bloginfo( 'description' );
 		}
 
-		return apply_filters( 'wpst_og_description', wp_kses_post( $description ) );
+		return apply_filters( 'wpst_og_description', esc_html( $description ) );
 
 	}
 
