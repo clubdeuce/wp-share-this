@@ -26,7 +26,7 @@ You can also download this library and include it manually.
 | ------ | ----------- | ----- |
 |register_id( _string_ $share_this_id )|Specify the ShareThis user id for tracking|0.0.1|
 |register_service( _string_ $service_name, _array_ $params )|Specify a service to be included. You can pass parameters specific to this service _(see below for a list of parameters)_.|0.0.1|
-|the_sharing_links( _null|int|WP_Post_ $post, _null|array_ $params )|Output the sharing links. You can pass parameters specific to this block of links _(see below for a list of parameters)_.|0.0.1|
+|the_sharing_links( _null/int/WP_Post_ $post, _null/array_ $params )|Output the sharing links. You can pass parameters specific to this block of links _(see below for a list of parameters)_.|0.0.1|
 |use_og( _bool_ $use )|Specify whether to include the [OpenGraph](https://ogp.me) information in the `<head>` of the document. Default: _true_.|0.0.2|
 
 ## Filters ##
