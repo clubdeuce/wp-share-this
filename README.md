@@ -25,10 +25,10 @@ You can also download this library and include it manually.
 This library exposes a number of filters:
 
 
-| Filter | Description | Since |
-| ------ | ----------- | ----- |
-| `wpst_link_classes_$service`|This filter allows you to specify classes for each service link, _e.g. `add_filter( 'wpst_classes_twitter', 'my_function' )`| 0.0.1 |
-|`wpst_og_url`|Allows you to filter the URL exposed via [OpenGraph](https://ogp.me)|0.0.1|
-|`wpst_og_title`|Allows you to filter the title exposed via [OpenGraph](https://ogp.me)|0.0.1|
-|`wpst_og_description`|Allows you to filter the description exposed via [OpenGraph](https://ogp.me)|0.0.1|
-|`wpst_og_image`|Allows you to filter the image exposed via [OpenGraph](https://ogp.me)|0.0.1|
+| Filter | Description | Parameters| Since |
+| ------ | ----------- | --------- | ----- |
+|`wpst_link_classes_$service`|This filter allows you to specify classes for each service link, _e.g. `add_filter( 'wpst_classes_twitter', 'my_function' )`|_array_ classnames|0.0.1 |
+|`wpst_og_url`|Allows you to filter the URL exposed via [OpenGraph](https://ogp.me)|_string_ URL|0.0.1|
+|`wpst_og_title`|Allows you to filter the title exposed via [OpenGraph](https://ogp.me)|_string_ title|0.0.1|
+|`wpst_og_description`|Allows you to filter the description exposed via [OpenGraph](https://ogp.me)|_string_ description|0.0.1|
+|`wpst_og_image`|Allows you to filter the image exposed via [OpenGraph](https://ogp.me)|_string_ image URL|0.0.1|
