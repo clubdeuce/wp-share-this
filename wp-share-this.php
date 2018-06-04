@@ -10,6 +10,8 @@ namespace Clubdeuce\WPShareThis;
  */
 class WP_Share_This {
 
+	const VERSION = '0.0.3';
+
 	/**
 	 * @var bool
 	 */
