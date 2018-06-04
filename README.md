@@ -92,3 +92,4 @@ This library exposes a number of filters:
 |`wpst_og_title`|Allows you to filter the title exposed via [OpenGraph](https://ogp.me)|_string_ title|0.0.1|
 |`wpst_og_description`|Allows you to filter the description exposed via [OpenGraph](https://ogp.me)|_string_ description|0.0.1|
 |`wpst_og_image`|Allows you to filter the image exposed via [OpenGraph](https://ogp.me)|_string_ image URL|0.0.1|
+|`wpst_link_text`|Allows you to filter the text displayed for the sharing link _*(defaults to the service name)*_|_string_ text|0.0.1|

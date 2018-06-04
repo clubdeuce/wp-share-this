@@ -1,0 +1,34 @@
+language: php
+
+php:
+  - 7.1
+  - 7.0
+
+services:
+  - mysql
+
+env:
+  global:
+    - WP_DIR="wp"
+  matrix:
+    - WP_VERSION="4.8.1"
+    - WP_VERSION="4.8.2"
+    - WP_VERSION="4.8.3"
+
+install:
+  - composer install
+
+before_script:
+  - svn checkout http://core.svn.wordpress.org/tags/${WP_VERSION} ${WP_DIR}
+  - mysql -e 'CREATE DATABASE test_db;'
+  - cp ${WP_DIR}/wp-config-sample.php ${WP_DIR}/wp-config.php
+  - sed -i 's/youremptytestdbnamehere/test_db/' ${WP_DIR}/wp-config.php
+  - sed -i 's/yourusernamehere/root/' ${WP_DIR}/wp-config.php
+  - sed -i 's/yourpasswordhere//' ${WP_DIR}/wp-config.php
+
+script:
+  - ./vendor/bin/codecept run wpunit --coverage-xml clover.xml --coverage-text
+
+after_script:
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover ./_output/clover.xml
