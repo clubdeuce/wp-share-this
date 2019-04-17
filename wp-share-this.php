@@ -91,7 +91,7 @@ class WP_Share_This {
 
 		foreach ( self::$_services as $service => $params ) {
 			$args = array_merge( $params, $args );
-			self::_render_sharing_link( $args, $service, $args['post'] );
+			self::_render_sharing_link( $args, $service );
 		}
 
 	}
@@ -110,40 +110,31 @@ class WP_Share_This {
 	/**
 	 * @param array    $params
 	 * @param string   $service
-	 * @param \WP_Post $post
 	 */
-	private static function _render_sharing_link( $params, $service, $post ) {
+	private static function _render_sharing_link( $params, $service ) {
 
 		$classes = apply_filters( "wpst_link_classes_{$service}", array() );
+		$post    = get_post();
 
-		// set some defaults
+		if ( $params['post'] instanceof \WP_Post ) {
+			$post = $params['post'];
+		}
+
+		unset( $params['post'] );
+
 		$args = wp_parse_args( $params, array(
-			'url'         => get_the_permalink(),
+			'url'         => get_permalink( $post ),
 			'short_url'   => null,
-			'title'       => get_the_title(),
+			'title'       => get_the_title( $post ),
 			'image'       => null,
-			'description' => null,
+			'description' => get_the_excerpt( $post ),
 			'username'    => null,
-			'message'     => get_the_excerpt(),
+			'message'     => get_the_excerpt( $post ),
 			'share_count' => true,
 		) );
 
-		// if we have a post, we will use post values for the defaults
-		if ( $post instanceof \WP_Post ) {
-			$args = wp_parse_args( $params, array(
-				'url'         => get_permalink( $post ),
-				'short_url'   => null,
-				'title'       => get_the_title( $post ),
-				'image'       => null,
-				'description' => get_the_excerpt( $post ),
-				'username'    => null,
-				'message'     => get_the_excerpt( $post ),
-				'share_count' => true,
-			) );
-
-			if ( has_post_thumbnail( $post ) ) {
-				$args['image'] = get_the_post_thumbnail_url( $post );
-			}
+		if ( has_post_thumbnail( $post ) ) {
+			$args['image'] = get_the_post_thumbnail_url( $post );
 		}
 
 		printf(
