@@ -11,9 +11,9 @@ env:
   global:
     - WP_DIR="wp"
   matrix:
-    - WP_VERSION="4.8.1"
-    - WP_VERSION="4.8.2"
-    - WP_VERSION="4.8.3"
+    - WP_VERSION="5.0"
+    - WP_VERSION="5.1"
+    - WP_VERSION="5.1.1"
 
 install:
   - composer install
