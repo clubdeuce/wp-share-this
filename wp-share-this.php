@@ -10,7 +10,7 @@ namespace Clubdeuce\WPShareThis;
  */
 class WP_Share_This {
 
-	const VERSION = '0.0.3';
+	const VERSION = '0.0.4';
 
 	/**
 	 * @var bool
@@ -113,7 +113,7 @@ class WP_Share_This {
 	 */
 	private static function _render_sharing_link( $params, $service ) {
 
-		$classes = apply_filters( "wpst_link_classes_{$service}", array() );
+		$classes = apply_filters( "wpst_link_classes_{$service}", array( $service, ) );
 		$post    = get_post();
 
 		if ( $params['post'] instanceof \WP_Post ) {
