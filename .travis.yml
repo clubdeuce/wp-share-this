@@ -1,8 +1,9 @@
 language: php
 
 php:
+  - 7.3
+  - 7.2
   - 7.1
-  - 7.0
 
 services:
   - mysql
@@ -11,16 +12,16 @@ env:
   global:
     - WP_DIR="wp"
   matrix:
-    - WP_VERSION="5.0"
-    - WP_VERSION="5.1"
-    - WP_VERSION="5.1.1"
+    - WP_VERSION="5.2.3"
+    - WP_VERSION="5.2.4"
+    - WP_VERSION="5.3"
 
 install:
   - composer install
 
 before_script:
   - svn checkout http://core.svn.wordpress.org/tags/${WP_VERSION} ${WP_DIR}
-  - mysql -e 'CREATE DATABASE test_db;'
+  - mysql -u root -e 'CREATE DATABASE test_db;'
   - cp ${WP_DIR}/wp-config-sample.php ${WP_DIR}/wp-config.php
   - sed -i 's/youremptytestdbnamehere/test_db/' ${WP_DIR}/wp-config.php
   - sed -i 's/yourusernamehere/root/' ${WP_DIR}/wp-config.php
