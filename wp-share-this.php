@@ -184,6 +184,10 @@ class WP_Share_This {
 			$url = home_url();
 		}
 
+		if ( is_post_type_archive() ) {
+			$url = get_post_type_archive_link( get_post_post_type() );
+		}
+
 		return apply_filters( 'wpst_og_url', esc_url( $url ) );
 
 	}
@@ -215,6 +219,11 @@ class WP_Share_This {
 			$title = get_bloginfo( 'name' );
 		}
 
+		if ( is_post_type_archive() ) {
+			$labels = get_post_type_labels( get_post_type_object( get_post_type() ) );
+			$title = sprintf( '%1$s: %2$s', get_bloginfo( 'name' ), $labels['name'] );
+		}
+
 		return apply_filters( 'wpst_og_title', wp_kses_post( $title ) );
 
 	}
@@ -228,6 +237,11 @@ class WP_Share_This {
 
 		if ( is_home() || is_front_page() ) {
 			$description = get_bloginfo( 'description' );
+		}
+
+		if ( is_post_type_archive() ) {
+			$labels = get_post_type_labels( get_post_type_object( get_post_type() ) );
+			$description = sprintf( 'The %1$s %2$s Archive', get_bloginfo( 'name' ), $labels['name'] );
 		}
 
 		return apply_filters( 'wpst_og_description', esc_html( $description ) );
