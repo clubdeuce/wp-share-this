@@ -141,15 +141,15 @@ class WP_Share_This {
 			'<div data-network="%1$s" class="st-custom-button %2$s"%3$s%4$s%5$s%6$s%7$s%8$s%9$s>%10$s%11$s</div>',
 			$service,
 			implode( ' ', apply_filters( 'wpst_link_classes', $classes, $service ) ),
-			self::_item_sharing_property( 'url',         $args['url'] ),
-			self::_item_sharing_property( 'short_url',   $args['short_url'] ),
-			self::_item_sharing_property( 'title',       $args['title'] ),
-			self::_item_sharing_property( 'image',       $args['image'] ),
-			self::_item_sharing_property( 'description', $args['description'] ),
-			self::_item_sharing_property( 'username',    $args['username'] ),
-			self::_item_sharing_property( 'message',     $args['message']  . "\r\n\r\n" . $args['url'] ),
-			apply_filters( 'wpst_link_text', ucfirst( $service ) ),
-			self::_item_sharing_count( $args['share_count'] )
+			esc_url( self::_item_sharing_property( 'url',         $args['url'] ) ),
+			esc_url( self::_item_sharing_property( 'short_url',   $args['short_url'] ) ),
+			esc_attr( self::_item_sharing_property( 'title',       $args['title'] ) ),
+			esc_url( self::_item_sharing_property( 'image',       $args['image'] ) ),
+			esc_attr( self::_item_sharing_property( 'description', $args['description'] ) ),
+			esc_attr( self::_item_sharing_property( 'username',    $args['username'] ) ),
+			esc_attr( self::_item_sharing_property( 'message',     $args['message']  . "\r\n\r\n" . $args['url'] ) ),
+			wp_kses_post( apply_filters( 'wpst_link_text', ucfirst( $service ) ) ),
+			wp_kses_post( self::_item_sharing_count( $args['share_count'] ) )
 		);
 
 	}
@@ -188,7 +188,7 @@ class WP_Share_This {
 			$url = get_post_type_archive_link( get_post_type() );
 		}
 
-		return apply_filters( 'wpst_og_url', esc_url( $url ) );
+		return apply_filters( 'wpst_og_url', $url );
 
 	}
 
