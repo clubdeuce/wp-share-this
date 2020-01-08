@@ -184,7 +184,7 @@ class WP_Share_This {
 			$url = home_url();
 		}
 
-		if ( is_post_type_archive() ) {
+		if ( is_post_type_archive() && get_post_type() ) {
 			$url = get_post_type_archive_link( get_post_type() );
 		}
 
