@@ -185,7 +185,7 @@ class WP_Share_This {
 		}
 
 		if ( is_post_type_archive() ) {
-			$url = get_post_type_archive_link( get_post_post_type() );
+			$url = get_post_type_archive_link( get_post_type() );
 		}
 
 		return apply_filters( 'wpst_og_url', esc_url( $url ) );
