@@ -244,7 +244,7 @@ class WP_Share_This {
 			$description = sprintf( 'The %1$s %2$s Archive', get_bloginfo( 'name' ), $labels['name'] );
 		}
 
-		return apply_filters( 'wpst_og_description', esc_html( $description ) );
+		return apply_filters( 'wpst_og_description', $description );
 
 	}
 
