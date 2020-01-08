@@ -219,7 +219,7 @@ class WP_Share_This {
 			$title = get_bloginfo( 'name' );
 		}
 
-		if ( is_post_type_archive() ) {
+		if ( is_post_type_archive() && get_post_type() ) {
 			$labels = get_post_type_labels( get_post_type_object( get_post_type() ) );
 			$title = sprintf( '%1$s: %2$s', get_bloginfo( 'name' ), $labels['name'] );
 		}
@@ -239,7 +239,7 @@ class WP_Share_This {
 			$description = get_bloginfo( 'description' );
 		}
 
-		if ( is_post_type_archive() ) {
+		if ( is_post_type_archive() && get_post_type() ) {
 			$labels = get_post_type_labels( get_post_type_object( get_post_type() ) );
 			$description = sprintf( 'The %1$s %2$s Archive', get_bloginfo( 'name' ), $labels['name'] );
 		}
