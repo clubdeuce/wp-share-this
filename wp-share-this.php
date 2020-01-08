@@ -184,8 +184,8 @@ class WP_Share_This {
 			$url = home_url();
 		}
 
-		if ( is_post_type_archive() && get_post_type() ) {
-			$url = get_post_type_archive_link( get_post_type() );
+		if ( is_post_type_archive() && $post_type = get_post_type() ) {
+			$url = get_post_type_archive_link( $post_type );
 		}
 
 		return apply_filters( 'wpst_og_url', $url );
@@ -219,8 +219,8 @@ class WP_Share_This {
 			$title = get_bloginfo( 'name' );
 		}
 
-		if ( is_post_type_archive() && get_post_type() ) {
-			$labels = get_post_type_labels( get_post_type_object( get_post_type() ) );
+		if ( is_post_type_archive() && $post_type = get_post_type() ) {
+			$labels = get_post_type_labels( get_post_type_object( $post_type ) );
 			$title = sprintf( '%1$s: %2$s', get_bloginfo( 'name' ), $labels['name'] );
 		}
 
@@ -239,8 +239,8 @@ class WP_Share_This {
 			$description = get_bloginfo( 'description' );
 		}
 
-		if ( is_post_type_archive() && get_post_type() ) {
-			$labels = get_post_type_labels( get_post_type_object( get_post_type() ) );
+		if ( is_post_type_archive() && $post_type = get_post_type() ) {
+			$labels = get_post_type_labels( get_post_type_object( $post_type ) );
 			$description = sprintf( 'The %1$s %2$s Archive', get_bloginfo( 'name' ), $labels['name'] );
 		}
 
