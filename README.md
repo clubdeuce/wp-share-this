@@ -1,3 +1,5 @@
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/clubdeuce/wp-share-this/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/clubdeuce/wp-share-this/?branch=master)
+
 # WP Share-This
 
 This library allows for easy implementation of sharing links using the [ShareThis](https://sharethis.com). _*Please note,
