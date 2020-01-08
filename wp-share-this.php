@@ -259,7 +259,7 @@ class WP_Share_This {
 			$image_url = '';
 		}
 
-		return apply_filters( 'wpst_og_image', esc_url( $image_url ) );
+		return apply_filters( 'wpst_og_image', $image_url );
 
 	}
 
