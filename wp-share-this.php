@@ -221,7 +221,7 @@ class WP_Share_This {
 
 		if ( is_post_type_archive() && $post_type = get_post_type() ) {
 			$labels = get_post_type_labels( get_post_type_object( $post_type ) );
-			$title = sprintf( '%1$s: %2$s', get_bloginfo( 'name' ), $labels['name'] );
+			$title = sprintf( '%1$s: %2$s', get_bloginfo( 'name' ), $labels->name );
 		}
 
 		return apply_filters( 'wpst_og_title', wp_kses_post( $title ) );
