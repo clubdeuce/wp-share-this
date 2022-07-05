@@ -21,12 +21,12 @@
     "php": ">=5.4.0"
   },
   "require-dev": {
-    "johnpbloch/wordpress": "4.9.5",
-    "mockery/mockery": "0.9.5",
-    "consolidation/robo": "^1.1",
-    "patchwork/jsqueeze": "^2.0",
-    "natxet/cssmin": "~3.0",
-    "lucatume/wp-browser": "^1.21"
+    "johnpbloch/wordpress": "*",
+    "mockery/mockery": "*",
+    "consolidation/robo": "*",
+    "patchwork/jsqueeze": "*",
+    "natxet/cssmin": "*",
+    "lucatume/wp-browser": "*"
   },
   "extra": {
     "wordpress-install-dir": "wp"
@@ -35,5 +35,10 @@
     "issues": "https://github.com/clubdeuce/wp-share-this/issues",
     "source":"https://github.com/clubdeuce/wp-share-this",
     "docs": "https://github.com/clubdeuce/wp-share-this/wiki"
+  },
+  "config": {
+    "allow-plugins": {
+      "johnpbloch/wordpress-core-installer": true
+    }
   }
 }
