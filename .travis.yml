@@ -1,16 +1,15 @@
 language: php
 
 php:
+  - 8.2
   - 8.1
-  - 8.0
-  - 7.4
 
 services:
   - mysql
 
 env:
   global:
-    - WP_DIR="wp"
+    - WP_DIR="wp_tests"
   matrix:
     - WP_VERSION="6.0"
     - WP_VERSION="6.1"
