@@ -1,9 +1,9 @@
 language: php
 
 php:
-  - 7.3
-  - 7.2
-  - 7.1
+  - 8.1
+  - 8.0
+  - 7.4
 
 services:
   - mysql
@@ -12,9 +12,9 @@ env:
   global:
     - WP_DIR="wp"
   matrix:
-    - WP_VERSION="5.2.3"
-    - WP_VERSION="5.2.4"
-    - WP_VERSION="5.3"
+    - WP_VERSION="6.0"
+    - WP_VERSION="6.1"
+    - WP_VERSION="6.2"
 
 install:
   - composer install
